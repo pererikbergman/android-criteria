@@ -24,4 +24,9 @@ public class OrCriteria<K> implements Criteria<K> {
         }
         return firstCriteriaItems;
     }
+
+    @Override
+    public boolean meetCriteria(final K object) {
+        return mFirstCriteria.meetCriteria(object) || mSecondCriteria.meetCriteria(object);
+    }
 }

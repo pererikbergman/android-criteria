@@ -19,7 +19,7 @@ public class AndCriteria<K> implements Criteria<K> {
     }
 
     public AndCriteria(Criteria firstCriteria, Criteria secondCriteria) {
-        mFirstCriteria  = firstCriteria;
+        mFirstCriteria = firstCriteria;
         mSecondCriteria = secondCriteria;
     }
 
@@ -28,5 +28,10 @@ public class AndCriteria<K> implements Criteria<K> {
         List<K> firstCriteriaItems = mFirstCriteria.meetCriteria(objects);
 
         return mSecondCriteria.meetCriteria(firstCriteriaItems);
+    }
+
+    @Override
+    public boolean meetCriteria(final K object) {
+        return mFirstCriteria.meetCriteria(object) && mSecondCriteria.meetCriteria(object);
     }
 }

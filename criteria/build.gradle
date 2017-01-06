@@ -1,0 +1,88 @@
+apply plugin: 'com.android.library'
+
+ext {
+    bintrayRepo = 'criteria'
+    bintrayName = 'criteria'
+
+    publishedGroupId = 'com.rakangsoftware.criteria'
+    libraryName = 'criteria'
+    artifact = 'criteria'
+
+    libraryDescription = 'A simple lib for filtering data. Edit'
+
+    siteUrl = 'https://github.com/pererikbergman/android-criteria'
+    gitUrl = 'https://github.com/pererikbergman/android-criteria.git'
+
+    libraryVersion = '0.0.1'
+
+    developerId = 'pererikbergman'
+    developerName = 'Per-Erik Bergman'
+    developerEmail = 'bergman@uncle.se'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.3"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:24.2.0'
+}
+
+/**
+ * Sets app version name and version code.
+ *
+ * Provided version should be in form 'X.Y.Z', these version will be parsed and version code will be
+ * generated from it as 'X * 10000 + Y * 100 + Z', i.e. '1.2.1' will be converted to '10201'.
+ *
+ * When building on build server version name will be extended to contain build number,
+ * i.e. '1.2.1-b231'. For svn it will be latest svn revision number, for git it will be
+ * a total number of commits from the branch root.
+ *
+ * Should be called instead of 'versionName' / 'versionCode' within defaultConfig closure:
+ * "setupVersion it, 'X.Y.Z'".
+ */
+ext.setupVersion = { config, version ->
+    def build = null
+
+    if (isOnBuildServer()) {
+        // We are running on Jenkins server
+        build = System.getenv('SVN_REVISION')
+        if (!build) build = 'git rev-list --count HEAD'.execute().text.trim()
+    }
+
+    def (major, minor, patch) = version.tokenize('.')
+    def code = major.toInteger() * 10000 + minor.toInteger() * 100 + patch.toInteger()
+    def name = build ? "${version}-b${build}" : version
+
+    config.versionCode code
+    config.versionName name
+
+    println "-------- VERSION --------\n" +
+            "-- CODE = ${code}\n" +
+            "-- NAME = ${name}\n" +
+            "-------------------------"
+}
+
+// Place it at the end of the file
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
