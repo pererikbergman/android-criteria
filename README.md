@@ -123,6 +123,25 @@ Criterion contains = new NotCriteria(new NameCriterion("a"), new NameCriterion("
 List<String> result = contains.meet(data);
 ```     
 
+### Nested criteria.
+Let's say we want all name containing 'a' or 'e' but not 'c'.
+
+``` java
+AndCriterion
+|-- NotCriterion
+|	`-- NameCriterion ('c')
+`-- OrCriterion
+ 	|-- NameCriterion ('a')
+ 	`-- NameCriterion ('r')
+```
+
+``` java
+Criterion<String> orCriterion = new OrCriteria(new NameCriterion("a"), new NameCriterion("r"));
+Criterion<String> notCriterion = new NotCriterion<>(new NameCriterion("c"));
+Criterion<String> andCriterion = new AndCriteria<>(orCriterion, notCriterion);
+List<String> result = andCriterion.meet(data);
+```
+
 ## License
 
     Copyright 2017 Per-Erik Bergman
