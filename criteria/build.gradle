@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 
 ext {
-    bintrayRepo = 'criteria'
+    bintrayRepo = 'maven'
     bintrayName = 'criteria'
 
     publishedGroupId = 'com.rakangsoftware.criteria'

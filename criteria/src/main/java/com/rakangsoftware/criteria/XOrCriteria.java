@@ -2,12 +2,12 @@ package com.rakangsoftware.criteria;
 
 import java.util.List;
 
-public class OrCriteria<K> implements Criteria<K> {
+public class XOrCriteria<K> implements Criteria<K> {
 
     private final Criteria mFirstCriteria;
     private final Criteria mSecondCriteria;
 
-    public OrCriteria(Criteria firstCriteria, Criteria secondCriteria) {
+    public XOrCriteria(Criteria firstCriteria, Criteria secondCriteria) {
         mFirstCriteria = firstCriteria;
         mSecondCriteria = secondCriteria;
     }
@@ -18,7 +18,9 @@ public class OrCriteria<K> implements Criteria<K> {
         List<K> otherCriteriaItems = mSecondCriteria.meet(objects);
 
         for (K object : otherCriteriaItems) {
-            if (!firstCriteriaItems.contains(object)) {
+            if (firstCriteriaItems.contains(object)) {
+                firstCriteriaItems.remove(object);
+            } else {
                 firstCriteriaItems.add(object);
             }
         }

@@ -24,14 +24,14 @@ public class AndCriteria<K> implements Criteria<K> {
     }
 
     @Override
-    public List<K> meetCriteria(List<K> objects) {
-        List<K> firstCriteriaItems = mFirstCriteria.meetCriteria(objects);
+    public List<K> meet(List<K> objects) {
+        List<K> firstCriteriaItems = mFirstCriteria.meet(objects);
 
-        return mSecondCriteria.meetCriteria(firstCriteriaItems);
+        return mSecondCriteria.meet(firstCriteriaItems);
     }
 
     @Override
-    public boolean meetCriteria(final K object) {
-        return mFirstCriteria.meetCriteria(object) && mSecondCriteria.meetCriteria(object);
+    public boolean meet(final K object) {
+        return mFirstCriteria.meet(object) && mSecondCriteria.meet(object);
     }
 }
