@@ -13,7 +13,7 @@ ext {
     siteUrl = 'https://github.com/pererikbergman/android-criteria'
     gitUrl = 'https://github.com/pererikbergman/android-criteria.git'
 
-    libraryVersion = '0.1.1'
+    libraryVersion = '0.1.2'
 
     developerId = 'pererikbergman'
     developerName = 'Per-Erik Bergman'

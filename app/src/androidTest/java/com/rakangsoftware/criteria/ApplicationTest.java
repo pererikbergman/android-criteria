@@ -1,4 +1,4 @@
-package criteria.rakangsoftware.com.criteria;
+package com.rakangsoftware.criteria;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
