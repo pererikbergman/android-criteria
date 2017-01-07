@@ -3,11 +3,11 @@ package com.rakangsoftware.criteria;
 import java.util.ArrayList;
 import java.util.List;
 
-public class XOrCriteria<K> implements Criterion<K> {
+public class XorCriteria<K> implements Criterion<K> {
 
     private final Criterion<K>[] mCriterion;
 
-    public XOrCriteria(Criterion<K>... criterion) {
+    public XorCriteria(Criterion<K>... criterion) {
         mCriterion = criterion;
     }
 
