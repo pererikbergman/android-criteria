@@ -1,32 +1,37 @@
 package com.rakangsoftware.criteria;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class OrCriteria<K> implements Criteria<K> {
+public class OrCriteria<K> implements Criterion<K> {
 
-    private final Criteria<K> mFirstCriteria;
-    private final Criteria<K> mSecondCriteria;
+    private final Criterion<K>[] mCriterion;
 
-    public OrCriteria(Criteria<K> firstCriteria, Criteria<K> secondCriteria) {
-        mFirstCriteria = firstCriteria;
-        mSecondCriteria = secondCriteria;
+    public OrCriteria(Criterion<K>... criterion) {
+        mCriterion = criterion;
     }
 
     @Override
     public List<K> meet(List<K> objects) {
-        List<K> firstCriteriaItems = mFirstCriteria.meet(objects);
-        List<K> otherCriteriaItems = mSecondCriteria.meet(objects);
+        List<K> result = new ArrayList<>();
 
-        for (K object : otherCriteriaItems) {
-            if (!firstCriteriaItems.contains(object)) {
-                firstCriteriaItems.add(object);
+        for (K object : objects) {
+            if (meet(object)) {
+                result.add(object);
             }
         }
-        return firstCriteriaItems;
+
+        return result;
     }
 
     @Override
     public boolean meet(final K object) {
-        return mFirstCriteria.meet(object) || mSecondCriteria.meet(object);
+        for (int i = 0; i < mCriterion.length; i++) {
+            if (mCriterion[i].meet(object)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

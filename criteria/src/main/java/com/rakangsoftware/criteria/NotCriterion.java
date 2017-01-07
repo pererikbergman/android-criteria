@@ -3,21 +3,21 @@ package com.rakangsoftware.criteria;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NotCriteria<K> implements Criteria<K> {
+public class NotCriterion<K> implements Criterion<K> {
 
-    private final Criteria<K> mCriteria;
+    private final Criterion<K> mCriterion;
 
-    public NotCriteria(Criteria<K> criteria) {
-        mCriteria = criteria;
+    public NotCriterion(Criterion<K> criterion) {
+        mCriterion = criterion;
     }
 
     @Override
     public List<K> meet(List<K> objects) {
-        List<K> result         = new ArrayList<>();
+        List<K> result = new ArrayList<>();
         for (K object : objects) {
             result.add(object);
         }
-        List<K> invertedResult = mCriteria.meet(objects);
+        List<K> invertedResult = mCriterion.meet(objects);
 
         for (K object : invertedResult) {
             if (result.contains(object)) {
@@ -30,6 +30,6 @@ public class NotCriteria<K> implements Criteria<K> {
 
     @Override
     public boolean meet(final K object) {
-        return !mCriteria.meet(object);
+        return !mCriterion.meet(object);
     }
 }

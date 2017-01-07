@@ -1,26 +1,21 @@
 package com.rakangsoftware.criteria;
 
-import java.util.List;
+public class AndCriteria<K> extends Criteria<K> {
 
-public class AndCriteria<K> implements Criteria<K> {
+    private final Criterion<K>[] mCriterion;
 
-    private Criteria<K> mFirstCriteria;
-    private Criteria<K> mSecondCriteria;
-
-    public AndCriteria(Criteria<K> firstCriteria, Criteria<K> secondCriteria) {
-        mFirstCriteria = firstCriteria;
-        mSecondCriteria = secondCriteria;
-    }
-
-    @Override
-    public List<K> meet(List<K> objects) {
-        List<K> firstCriteriaItems = mFirstCriteria.meet(objects);
-
-        return mSecondCriteria.meet(firstCriteriaItems);
+    public AndCriteria(Criterion<K>... criterion) {
+        mCriterion = criterion;
     }
 
     @Override
     public boolean meet(final K object) {
-        return mFirstCriteria.meet(object) && mSecondCriteria.meet(object);
+        for (Criterion<K> criterion : mCriterion) {
+            if (!criterion.meet(object)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

@@ -1,34 +1,38 @@
 package com.rakangsoftware.criteria;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class XOrCriteria<K> implements Criteria<K> {
+public class XOrCriteria<K> implements Criterion<K> {
 
-    private final Criteria<K> mFirstCriteria;
-    private final Criteria<K> mSecondCriteria;
+    private final Criterion<K>[] mCriterion;
 
-    public XOrCriteria(Criteria<K> firstCriteria, Criteria<K> secondCriteria) {
-        mFirstCriteria = firstCriteria;
-        mSecondCriteria = secondCriteria;
+    public XOrCriteria(Criterion<K>... criterion) {
+        mCriterion = criterion;
     }
 
     @Override
     public List<K> meet(List<K> objects) {
-        List<K> firstCriteriaItems = mFirstCriteria.meet(objects);
-        List<K> otherCriteriaItems = mSecondCriteria.meet(objects);
+        List<K> result = new ArrayList<>();
 
-        for (K object : otherCriteriaItems) {
-            if (firstCriteriaItems.contains(object)) {
-                firstCriteriaItems.remove(object);
-            } else {
-                firstCriteriaItems.add(object);
+        for (K object : objects) {
+            if (meet(object)) {
+                result.add(object);
             }
         }
-        return firstCriteriaItems;
+
+        return result;
     }
 
     @Override
     public boolean meet(final K object) {
-        return mFirstCriteria.meet(object) || mSecondCriteria.meet(object);
+        int count = 0;
+        for (int i = 0; i < mCriterion.length; i++) {
+            if (mCriterion[i].meet(object)) {
+                count++;
+            }
+        }
+
+        return count == 1;
     }
 }
