@@ -2,6 +2,7 @@
 Criteria is a small and simple library for filtering in memory data.
 
 ## Project News 
+ * Version 0.1.2 released, added test code and minor fixes.
  * Just released version 0.1.1.
 
 ## Features
@@ -16,7 +17,7 @@ Import into your gradle project:
  ``` java
 dependencies {
     ...
-    compile 'com.rakangsoftware.criteria:criteria:0.1.1'
+    compile 'com.rakangsoftware.criteria:criteria:0.1.2'
     ...
 }
 ```
