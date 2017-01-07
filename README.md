@@ -77,47 +77,47 @@ List<String> result = contains.meet(data);
 ### How to AndCriteria
 This code snippet will return a list with all names containing the letters 'a' and 'r'.
 ``` java
-Criterion contains = new AndCriteria(new NameCriterion("a"), new NameCriterion("r"));
-List<String> result = contains.meet(data);
+Criterion<String> contains = new AndCriteria<>(new NameCriterion("a"), new NameCriterion("r"));
+List<String>      result   = contains.meet(getNames());
 ```         
 
 This code snippet will return a list with all names containing the letters 'a', 'r' and 'p'.
 ``` java
-Criterion contains = new AndCriteria(new NameCriterion("a"), new NameCriterion("r"), new NameCriterion("p"));
-List<String> result = contains.meet(data);
+Criterion<String> contains = new AndCriteria<>(new NameCriterion("a"), new NameCriterion("r"), new NameCriterion("p"));
+List<String>      result   = contains.meet(getNames());
 ```         
 
 ### How to OrCriteria
 This code snippet will return a list with all names containing the letter 'a' or 'r'.
 ``` java
-Criterion contains = new OrCriteria(new NameCriterion("a"), new NameCriterion("r"));
-List<String> result = contains.meet(data);
+Criterion<String> contains = new OrCriteria<>(new NameCriterion("a"), new NameCriterion("r"));
+List<String>      result   = contains.meet(data);
 ```         
 
 This code snippet will return a list with all names containing the letter 'a', 'r' or 'p'.
 ``` java
-Criterion contains = new OrCriteria(new NameCriterion("a"), new NameCriterion("r"), new NameCriterion("p"));
-List<String> result = contains.meet(data);
+CriterionString> contains = new OrCriteria<>(new NameCriterion("a"), new NameCriterion("r"), new NameCriterion("p"));
+List<String>     result   = contains.meet(data);
 ```         
 
 ### How to XorCriteria
 This code snippet will return a list with all names containing the letter 'a' or 'r' but not both of them.
 ``` java
-Criterion contains = new XorCriteria(new NameCriterion("a"), new NameCriterion("r"));
-List<String> result = contains.meet(data);
+Criterion<String> contains = new XorCriteria<>(new NameCriterion("a"), new NameCriterion("r"));
+List<String>      result   = contains.meet(data);
 ```         
 
 This code snippet will return a list with all names containing the any of the letters 'a', 'r' or 'p' but only one of them.
 ``` java
-Criterion contains = new XorCriteria(new NameCriterion("a"), new NameCriterion("r"), new NameCriterion("p"));
-List<String> result = contains.meet(data);
+Criterion<String> contains = new XorCriteria<>(new NameCriterion("a"), new NameCriterion("r"), new NameCriterion("p"));
+List<String>      result   = contains.meet(data);
 ```     
 
 ### How to NotCriteria
 This code snippet will return a list with all names not containing the letter 'a'.
 ``` java
-Criterion    contains = new NotCriterion(new NameCriterion("a"));
-List<String> result   = contains.meet(getNames());
+Criterion<String>    contains = new NotCriterion<>(new NameCriterion("a"));
+List<String>         result   = contains.meet(getNames());
 ``` 
 
 ### Nested criteria.
@@ -133,7 +133,7 @@ AndCriterion
 ```
 
 ``` java
-Criterion<String> orCriterion = new OrCriteria(new NameCriterion("a"), new NameCriterion("r"));
+Criterion<String> orCriterion = new OrCriteria<>(new NameCriterion("a"), new NameCriterion("r"));
 Criterion<String> notCriterion = new NotCriterion<>(new NameCriterion("c"));
 Criterion<String> andCriterion = new AndCriteria<>(orCriterion, notCriterion);
 List<String> result = andCriterion.meet(data);
