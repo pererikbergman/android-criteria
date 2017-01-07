@@ -1,8 +1,3 @@
-# android-criteria
-A simple lib for filtering data.
-
-In the project build.gradle add the repository : url 'https://dl.bintray.com/pererikbergman/maven'
-
 # Android Criteria 
 Criteria is a small and simple library for filtering in memory data.
 
