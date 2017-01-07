@@ -17,6 +17,14 @@ Criteria is a small and simple library for filtering in memory data.
 Android 4.0.3 and above support
 
 ## Usage
+Import into your gradle project:
+ ``` java
+dependencies {
+    ...
+    compile 'com.rakangsoftware.criteria:criteria:0.1.1'
+    ...
+}
+```
 First you need to have your model object. To make this example clean and easy I will use String as model. 
 
 ### Data to use
