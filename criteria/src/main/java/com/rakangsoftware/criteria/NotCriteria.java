@@ -5,9 +5,9 @@ import java.util.List;
 
 public class NotCriteria<K> implements Criteria<K> {
 
-    private final Criteria mCriteria;
+    private final Criteria<K> mCriteria;
 
-    public NotCriteria(Criteria criteria) {
+    public NotCriteria(Criteria<K> criteria) {
         mCriteria = criteria;
     }
 

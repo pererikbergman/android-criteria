@@ -4,10 +4,10 @@ import java.util.List;
 
 public class XOrCriteria<K> implements Criteria<K> {
 
-    private final Criteria mFirstCriteria;
-    private final Criteria mSecondCriteria;
+    private final Criteria<K> mFirstCriteria;
+    private final Criteria<K> mSecondCriteria;
 
-    public XOrCriteria(Criteria firstCriteria, Criteria secondCriteria) {
+    public XOrCriteria(Criteria<K> firstCriteria, Criteria<K> secondCriteria) {
         mFirstCriteria = firstCriteria;
         mSecondCriteria = secondCriteria;
     }

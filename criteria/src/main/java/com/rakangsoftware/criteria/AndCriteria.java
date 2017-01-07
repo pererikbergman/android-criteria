@@ -4,21 +4,10 @@ import java.util.List;
 
 public class AndCriteria<K> implements Criteria<K> {
 
-    private Criteria mFirstCriteria;
-    private Criteria mSecondCriteria;
+    private Criteria<K> mFirstCriteria;
+    private Criteria<K> mSecondCriteria;
 
-    public AndCriteria() {
-    }
-
-    public void setFirstCriteria(Criteria firstCriteria) {
-        mFirstCriteria = firstCriteria;
-    }
-
-    public void setSecondCriteria(Criteria secondCriteria) {
-        mSecondCriteria = secondCriteria;
-    }
-
-    public AndCriteria(Criteria firstCriteria, Criteria secondCriteria) {
+    public AndCriteria(Criteria<K> firstCriteria, Criteria<K> secondCriteria) {
         mFirstCriteria = firstCriteria;
         mSecondCriteria = secondCriteria;
     }

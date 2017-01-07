@@ -4,10 +4,10 @@ import java.util.List;
 
 public class OrCriteria<K> implements Criteria<K> {
 
-    private final Criteria mFirstCriteria;
-    private final Criteria mSecondCriteria;
+    private final Criteria<K> mFirstCriteria;
+    private final Criteria<K> mSecondCriteria;
 
-    public OrCriteria(Criteria firstCriteria, Criteria secondCriteria) {
+    public OrCriteria(Criteria<K> firstCriteria, Criteria<K> secondCriteria) {
         mFirstCriteria = firstCriteria;
         mSecondCriteria = secondCriteria;
     }
