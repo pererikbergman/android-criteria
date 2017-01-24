@@ -1,3 +1,5 @@
+[ ![Download](https://api.bintray.com/packages/pererikbergman/maven/criteria/images/download.svg) ](https://bintray.com/pererikbergman/maven/criteria/_latestVersion)
+
 # Android Criteria 
 Criteria is a small and simple library for filtering in memory data.
 
