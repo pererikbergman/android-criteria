@@ -1,4 +1,5 @@
-[ ![Download](https://api.bintray.com/packages/pererikbergman/maven/criteria/images/download.svg) ](https://bintray.com/pererikbergman/maven/criteria/_latestVersion) ![Download](https://travis-ci.org/pererikbergman/android-criteria.svg?branch=master)
+[ ![Download](https://api.bintray.com/packages/pererikbergman/maven/criteria/images/download.svg) ](https://bintray.com/pererikbergman/maven/criteria/_latestVersion) ![Download](https://travis-ci.org/pererikbergman/android-criteria.svg?branch=master) <a href="http://www.methodscount.com/?lib=com.rakangsoftware.criteria%3Acriteria%3A0.1.2"><img src="https://img.shields.io/badge/Methods and size-core: 25 | deps: 16982 | 19 KB-e91e63.svg"/></a>
+
 
 # Android Criteria 
 Criteria is a small and simple library for filtering in memory data.
